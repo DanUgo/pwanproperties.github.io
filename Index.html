@@ -1,0 +1,2486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/carousel.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <style>
+      a {
+        color: #010101;
+        text-decoration: none;
+        transition: all 0.7s ease;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+      p {
+        margin: 0 0 20px 0;
+      }
+      .card {
+        margin-bottom: 30px;
+      }
+      .card_content {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.02);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        z-index: 2;
+      }
+      .entry_cats ul.post-categories li {
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      .entry_cats {
+        margin-bottom: 10px;
+      }
+      .post-categories {
+        list-style: none;
+        margin: 0px;
+        padding: 0;
+      }
+
+      .location-button {
+        background-color: #ff3d00;
+        border-radius: 2px;
+        text-align: center;
+        text-decoration: none;
+        padding: 4px 10px;
+        color: white;
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: capitalize;
+      }
+      .location-button:hover {
+        background-color: black;
+        transition: 0.7s;
+        text-decoration: none;
+        color: white;
+      }
+      .post-title {
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+      }
+      .post-title3 {
+        color: #010101;
+        font-weight: 400;
+        font-size: 16px;
+      }
+      .post-title2 {
+        color: white;
+        font-weight: bold;
+      }
+      .post-title:hover {
+        color: #ff3d00;
+        text-decoration: none;
+        transition: all 0.7s ease;
+      }
+
+      .post-heading h2 {
+        margin: 0;
+      }
+      .cm-post-meta {
+        margin-top: 5px;
+      }
+      ul.post_meta {
+        list-style: none;
+        margin: 0px;
+        margin-top: 10px;
+        padding: 0;
+      }
+      ul.post_meta li {
+        display: inline-block;
+        font-size: 14px;
+        margin-right: 15px;
+        margin-bottom: 0px;
+      }
+      /*ul.post_meta li.post_author a::before {
+        content: "\e8e9";
+      }
+      ul.post_meta li a::before {
+        font-family: "feather";
+        font-size: 14px;
+        margin-right: 5px;
+      }*/
+      .fa-user-o {
+        margin-right: 4px;
+      }
+      ul.post_meta li a {
+        display: inline-block;
+        color: #666666;
+        font-size: 14px;
+        transition: all 0.7s ease;
+      }
+      /*ul.post_meta li.posted_date a::before {
+        content: "\f133";
+      }*/
+
+      .box {
+        position: relative;
+        margin-bottom: 30px;
+      }
+      .post_thumb {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .imghover {
+        position: relative;
+
+        margin: 0px;
+      }
+      img {
+        max-width: 100%;
+        border-style: none;
+        height: auto;
+        vertical-align: middle;
+      }
+      .imghover img {
+        transform: scale(1);
+      }
+      .imghover:hover {
+        transform: scale(1.03);
+        transition: all 1s;
+      }
+      .row {
+        /*display: flex;*/
+        margin: 0;
+      }
+      .post_thumb2 {
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .post-holder {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 20px;
+        background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.5) 40%,
+          black 100%
+        );
+      }
+      .small_posts {
+        margin-bottom: 10px;
+      }
+      .small_posts_left {
+        padding-right: 5px;
+        padding-left: 0;
+      }
+      .small_posts_right {
+        padding-left: 5px;
+        padding-right: 0;
+      }
+      .no-pd {
+        padding: 0;
+      }
+      .widget {
+        margin-bottom: 30px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.03);
+        padding: 30px 20px;
+      }
+      .widget_search {
+        display: block;
+      }
+      .cm-search-form {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .widget-title {
+        margin-bottom: 25px;
+        position: relative;
+      }
+      .widget-title h2::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        top: 50%;
+        margin-left: 15px;
+        background-color: #ff3d00;
+      }
+      .author_name {
+        margin: 20px 0px 10px;
+      }
+      .author_desc {
+        margin-bottom: 30px;
+      }
+      .author-detail-link {
+        margin-top: 15px;
+      }
+      .author-detail-link a {
+        padding: 10px 20px;
+        color: #ffffff;
+        background-color: #ff3d00;
+      }
+      .widget-title h2 {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      .widget ul li {
+        margin: 0px;
+      }
+      .widget ul {
+        margin: 0px;
+        padding: 0;
+        list-style: none;
+      }
+      .recent-posts li {
+        position: relative;
+        border-bottom: 1px solid #eeeeee;
+        padding: 10px 0;
+        transition-duration: 0.6s;
+      }
+      .widget_categories li {
+        position: relative;
+        border-bottom: 1px solid #eeeeee;
+        padding: 10px 0;
+        transition-duration: 0.6s;
+      }
+      .logo-container {
+        padding: 30px 0;
+      }
+      .site-title {
+        font-family: "Roboto", sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 0;
+      }
+      .site-description {
+        font-size: 14px;
+      }
+      .advertisement-area {
+        text-align: right;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+      .dark {
+        background: black;
+      }
+      .primary-navigation {
+        position: relative;
+        width: 100%;
+        z-index: 9900;
+        line-height: normal;
+      }
+      .primary-navigation ul {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+      .home-btn {
+        background-color: #ff3d00;
+      }
+      .primary-navigation li {
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        line-height: normal;
+        vertical-align: middle;
+      }
+      .primary-navigation li.has-sub > a:after {
+        content: "\f0d7";
+        font-family: "FontAwesome";
+        margin-left: 5px;
+      }
+      .primary-navigation.dark li a {
+        color: #fff;
+      }
+      .primary-navigation.dark li a:hover {
+        text-decoration: none;
+        color: #ff3d00;
+      }
+      .primary-navigation ul li a {
+        position: relative;
+        font-size: 1rem;
+        padding: 15px 10px;
+        padding-left: 18px;
+        font-weight: 400;
+      }
+      .primary-navigation li a {
+        display: block;
+        font-size: 15px;
+        padding: 8px 15px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-out;
+      }
+      .primary-navigation ul ul {
+        top: auto;
+        width: 220px;
+        position: absolute;
+        z-index: 9;
+        text-align: left;
+        display: block;
+        background: #010101;
+      }
+      .primary-navigation ul li .sub-menu {
+        clip: rect(1px, 1px, 1px, 1px);
+      }
+      .sub-menu {
+        visibility: visible;
+        opacity: 1;
+      }
+      .primary-navigation li.has-sub > a:after {
+        content: "\f0d7";
+        font-family: "FontAwesome";
+        margin-left: 5px;
+      }
+      .primarynav_search_icon {
+        float: right;
+      }
+      .footer_inner {
+        position: relative;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #111111;
+      }
+      .footer-gallery {
+        display: flex;
+      }
+      @media screen and (max-width: 400px) {
+        .footer-gallery {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .footer_images {
+        width: 300px;
+        height: 150px;
+        margin-bottom: 4px;
+        margin-right: 4px;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .zoom-effect-overlay {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        opacity: 0;
+      }
+      .zoom-effect-overlay:hover {
+        opacity: 1;
+        transition: 0.7s;
+      }
+      .footer_images h6 {
+        color: white;
+        padding: 0px 8px 0px 8px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+      }
+      .copyright_section {
+        padding-top: 30px;
+      }
+      .copyrights a {
+        color: #ff3d00;
+      }
+      .copyrights p {
+        font-size: 15px;
+        margin: 0px;
+        padding: 0px;
+        color: white;
+      }
+      .footer_nav ul {
+        list-style: none;
+        text-align: right;
+        margin: 0px;
+        padding: 0px;
+      }
+      .footer_nav ul li {
+        display: inline-block;
+        margin: 0px;
+      }
+      .footer_links {
+        display: inline-block;
+        padding-right: 10px;
+        margin-right: 10px;
+        font-size: 15px;
+        line-height: 16px;
+        border-right: 1px solid;
+        border-right-color: #2b2b2b;
+        color: white;
+      }
+      .footer_links:hover {
+        color: #ff3d00;
+      }
+      .toTop {
+        position: fixed;
+        z-index: 2;
+        bottom: 10px;
+        right: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #ff3d00;
+        color: #fff;
+        border: none;
+        padding: 12px 15px;
+        border-radius: 2px;
+        transition: all 0.7s ease;
+        display: none;
+      }
+      .toTop:hover {
+        background: #ff3d00;
+      }
+      .fa-home {
+        font-size: 22px;
+        width: 30px;
+      }
+      .fa-comment-o {
+        margin-right: 4px;
+      }
+      .fa-angle-up::before {
+        display: inline-block;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+      .fa-angle-up::before {
+        content: "\f106";
+        font-weight: 400;
+      }
+      .ticker-news-area {
+        margin-top: 30px;
+      }
+      .news_ticker_wrap {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: unset;
+        position: relative;
+        z-index: 5;
+      }
+      .ticker_head {
+        display: block;
+        max-width: 200px;
+        overflow: hidden;
+        background-color: #ff3d00;
+        color: #fff;
+        padding: 0 10px;
+        text-align: center;
+      }
+      .ticker_title {
+        display: inline-block;
+        font-size: 15px;
+        margin-left: 3px;
+      }
+      .ticker_items {
+        display: block;
+        overflow: hidden;
+        max-width: 100%;
+        width: calc(100% - 200px);
+        padding: 0px 15px;
+        height: 30px;
+        line-height: 30px;
+      }
+      .ticker-headlines:hover {
+        color: #ff3d00;
+      }
+      .fa-bolt:before {
+        content: "\f0e7";
+      }
+      .banner-area {
+        margin-top: 30px;
+      }
+      .heateor_sss_vertical_sharing {
+        position: fixed;
+        top: 20vh;
+        bottom: 20vh;
+        left: 0;
+        z-index: 5;
+      }
+      input,
+      button {
+        border-width: 0;
+      }
+      input {
+        width: 90%;
+      }
+    </style>
+    <div
+      id="tpbr_box"
+      style="
+        line-height: 2em;
+        padding: 5px 0px 6px;
+        background: #0769bf;
+        margin: 0 auto;
+
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-size: 15px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        position: fixed;
+        top: 0;
+        z-index: 90;
+      "
+    >
+      Which Property do you want ? call or chat 08027659332
+    </div>
+
+    <div class="container" style="margin-top: 40px">
+      <div class="logo-container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-12">
+            <div class="logo">
+              <h1 class="site-title">
+                <a
+                  class="post-title post-title3 site-title"
+                  href="http://pwanproperty.com.ng/"
+                  rel="home"
+                  >PWAN Property Nigeria</a
+                >
+              </h1>
+              <p class="site-description">Genuine Properties in Ngeria</p>
+            </div>
+          </div>
+          <div class="cm-col-lg-8 cm-col-12">
+            <div class="advertisement-area">
+              <div>
+                <div class="textwidget">
+                  <p>
+                    <img
+                      class="alignnone wp-image-45 size-full"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2020/06/header.jpg"
+                      alt=""
+                      width="728"
+                      height="90"
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="main-navigation">
+        <div class="primary-navigation dark">
+          <ul class="menu-items">
+            <li class="home-btn">
+              <a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+            </li>
+            <li><a href="#">Home</a></li>
+            <li>
+              <a href="#"
+                >Lagos <i class="fa fa-caret-down" aria-hidden="true"></i
+              ></a>
+              <ul class="sub-menu">
+                <li><a href="#">Enugu</a></li>
+                <li><a href="#">Owerri</a></li>
+                <li><a href="#">Asaba</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Enugu</a></li>
+            <li><a href="#">Owerri</a></li>
+            <li><a href="#">Asaba</a></li>
+            <li><a href="#">Uyo</a></li>
+            <li><a href="#">Ota(Ogun)</a></li>
+            <li><a href="#">Ibadan</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Personal Property</a></li>
+            <li class="primarynav_search_icon">
+              <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="ticker-news-area">
+        <div class="container">
+          <div class="news_ticker_wrap">
+            <div class="ticker_head">
+              <span class="ticker_icon">
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+              </span>
+              <div class="ticker_title">Breaking News</div>
+            </div>
+            <div class="ticker_items">
+              <div class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2022/04/22/oj-marc-estate-gbetu%ef%bf%bc/"
+                        >OJ &#038; MARC ESTATE, GBETU￼</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2022/04/22/excel-courts-estate-ketu/"
+                        >EXCEL COURTS ESTATE, KETU</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2022/04/22/oj-marc-estate-ilamija-ibeju-lekki/"
+                        >OJ &#038; MARC #ESTATE, ILamija, Ibeju Lekki</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/11/12/buy-land-from-us-and-we-help-your-resell-at-40-profit/"
+                        >Buy Land from us and We help your Resell at 40%
+                        Profit</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/10/27/rejoice-villas-estate-ikorodu/"
+                        >REJOICE VILLAS ESTATE IKORODU</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/10/24/let-your-money-work-for-you/"
+                        >Let your money work for you</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/10/24/max-beach-front-ibeju-lekki/"
+                        >Max beach front Ibeju-Lekki</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/10/08/regent-city-oshoroko-ibeju-lekki-with-c-of-o/"
+                        >Regent City Oshoroko , Ibeju Lekki with C of O</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/04/27/the-signature-ogombo-lekki/"
+                        >The Signature Ogombo Lekki</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                  <div class="carousel-item">
+                    <p>
+                      <a
+                        class="ticker-headlines"
+                        href="http://pwanproperty.com.ng/index.php/2021/04/27/legend-bay-estate-ajah-15m/"
+                        >LEGEND BAY ESTATE Ajah 15m</a
+                      >
+                    </p>
+                  </div>
+                  <!-- .item -->
+                </div>
+                <!-- .owl-carousel -->
+              </div>
+            </div>
+            <div class="ticker-carousel-control">
+              <a
+                href="#myCarousel"
+                class="carousel-control-prev2"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="sr-only">previous</span>
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
+              <a
+                href="#myCarousel"
+                class="carousel-control-next2"
+                role="button"
+                data-slide="next"
+              >
+                <span class="sr-only">previous</span>
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="banner-area">
+        <div class="row">
+          <div
+            class="col-lg-7 col-12"
+            style="padding-right: 5px; margin-bottom: 60px"
+          >
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div
+                  class="carousel-item active"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2022/04/excel-courts-ketu.jpg);
+                  "
+                >
+                  <div class="post-holder">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                        <li>
+                          <a href="#" class="location-button">Mainland</a>
+                        </li>
+                      </ul>
+                      <div class="post-heading">
+                        <h2>
+                          <a href="#" class="post-title post-title2"
+                            >EXCEL COURTS ESTATE, KETU</a
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="carousel-item"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2022/04/OJ-and-Marc-Ilamija.jpg);
+                  "
+                >
+                  <div class="post-holder">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                      </ul>
+                      <div class="post-heading">
+                        <h2>
+                          <a href="#" class="post-title post-title2"
+                            >OJ &#038; MARC #ESTATE, ILamija, Ibeju Lekki</a
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="carousel-item"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/11/buy-to-sell.jpg);
+                  "
+                >
+                  <div class="post-holder">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li><a href="#" class="location-button">Blog</a></li>
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                        <li>
+                          <a href="#" class="location-button"
+                            >Personal Property</a
+                          >
+                        </li>
+                      </ul>
+                      <div class="post-heading">
+                        <h2>
+                          <a href="#" class="post-title post-title2"
+                            >Buy Land from us and We help your Resell at 40%
+                            Profit</a
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="carousel-item"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/10/Rejoice-villas.jpg);
+                  "
+                >
+                  <div class="post-holder">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ikorodu</a>
+                        </li>
+                      </ul>
+                      <div class="post-heading">
+                        <h2>
+                          <a href="#" class="post-title post-title2"
+                            >REJOICE VILLAS ESTATE IKORODU</a
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="carousel-item"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2022/04/oj-and-marc-gbetu.jpg);
+                  "
+                >
+                  <div class="post-holder">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                      </ul>
+                      <div class="post-heading">
+                        <h2>
+                          <a href="#" class="post-title post-title2"
+                            >OJ &#038; MARC ESTATE, GBETU￼</a
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                href="#myCarousel"
+                class="carousel-control-prev"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="sr-only">previous</span>
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
+              <a
+                href="#myCarousel"
+                class="carousel-control-next"
+                role="button"
+                data-slide="next"
+              >
+                <span class="sr-only">previous</span>
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-12" style="padding-left: 5px">
+            <div class="row">
+              <div class="col-lg-6 col-12 no-pd">
+                <div class="col small_posts small_posts_left">
+                  <div
+                    class="post_thumb2"
+                    style="
+                      background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/10/IMG-20211022-WA0035.jpg);
+                    "
+                  >
+                    <div class="post-holder">
+                      <div class="entry_cats">
+                        <ul class="post-categories">
+                          <!--li>
+                            <a href="#" class="location-button">Mainland</a>
+                          </li-->
+                          <li>
+                            <a href="#" class="location-button">Ota(Ogun)</a>
+                          </li>
+                          <li>
+                            <a href="#" class="location-button">Owerri</a>
+                          </li>
+                          <li>
+                            <a href="#" class="location-button"
+                              >Personal Property</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#" class="location-button"
+                              >Uncategorized</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#" class="location-button">Uyo</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-heading">
+                        <a href="#" class="post-title post-title3 post-title2"
+                          >Let your money work for you</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-12 no-pd">
+                <div class="col small_posts small_posts_right">
+                  <div
+                    class="post_thumb2"
+                    style="
+                      background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/10/IMG-20211024-WA0012.jpg);
+                    "
+                  >
+                    <div class="post-holder">
+                      <div class="entry_cats">
+                        <ul class="post-categories">
+                          <li>
+                            <a href="#" class="location-button">Ibeju Lekki</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-heading">
+                        <a href="#" class="post-title post-title3 post-title2"
+                          >Max beach front Ibeju-Lekki</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-12 no-pd">
+                <div class="col small_posts small_posts_left">
+                  <div
+                    class="post_thumb2"
+                    style="
+                      background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/10/Regent-City-Oshoroko.gif);
+                    "
+                  >
+                    <div class="post-holder">
+                      <div class="entry_cats">
+                        <ul class="post-categories">
+                          <li>
+                            <a href="#" class="location-button">Ibeju Lekki</a>
+                          </li>
+                          <li>
+                            <a href="#" class="location-button"
+                              >Uncategorized</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-heading">
+                        <a href="#" class="post-title post-title3 post-title2"
+                          >Regent City Oshoroko, Ibeju Lekki with C of O</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-12 no-pd">
+                <div class="col small_posts small_posts_right">
+                  <div
+                    class="post_thumb2"
+                    style="
+                      background-image: url(http://pwanproperty.com.ng/wp-content/uploads/2021/04/Signatures-ogombo.gif);
+                    "
+                  >
+                    <div class="post-holder">
+                      <div class="entry_cats">
+                        <ul class="post-categories">
+                          <li>
+                            <a href="#" class="location-button">Ibeju Lekki</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-heading">
+                        <a href="#" class="post-title post-title3 post-title2"
+                          >The Signature Ogombo Lekki</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-12">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/oj-and-marc-gbetu-800x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >OJ & MARC ESTATE, GBETU￼</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/Rejoice-gardens-uyo-761x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Uyo</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2>
+                        <a href="#" class="post-title">REJOICE GARDEN UYO</a>
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/Imo-estates-800x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Owerri</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2>
+                        <a href="#" class="post-title">Estates in Imo State</a>
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/excel-courts-ketu-800x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                        <li>
+                          <a href="#" class="location-button">Mainland</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 0.9">
+                        <a href="#" class="post-title"
+                          >EXCEL COURTS ESTATE, KETU
+                        </a>
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">Wise Francis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/OJ-and-Marc-Ilamija-764x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >OJ & MARC #ESTATE, ILamija, Ibeju Lekki</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/regent-city-Enugu-800x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Enugu</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >Regent City Estate, Enugu, 1.5m</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/Regent-Town-Owerri-800x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Owerri</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >REGENT TOWN ESTATE OWERRI</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">April 12 2022</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2021/11/buy-to-sell-720x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Blog</a>
+                        </li>
+                        <li>
+                          <a href="#" class="location-button">Ibeju Lekki</a>
+                        </li>
+                        <li>
+                          <a href="#" class="location-button"
+                            >Personal Property</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 0.9">
+                        <a href="#" class="post-title"
+                          >Buy Land from us and We help your Resell at 40%
+                          Profit</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">Wise Francis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">November 12, 2021</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2021/10/Rejoice-villas-761x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Ikorodu</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >REJOICE VILLAS ESTATE IKORODU</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">October 27, 2021</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-12">
+              <div class="card">
+                <div class="post_thumb">
+                  <figure class="imghover">
+                    <img
+                      width="761px"
+                      height="450px"
+                      src="http://pwanproperty.com.ng/wp-content/uploads/2021/10/IMG-20210709-WA0006-758x450.jpg"
+                      alt=""
+                    />
+                  </figure>
+                  <div class="card_content">
+                    <div class="entry_cats">
+                      <ul class="post-categories">
+                        <li>
+                          <a href="#" class="location-button">Asaba</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="post-heading">
+                      <h2 style="line-height: 1">
+                        <a href="#" class="post-title"
+                          >Diamond Crest Estate Asaba</a
+                        >
+                      </h2>
+                    </div>
+                    <div class="cm-post-meta">
+                      <ul class="post_meta">
+                        <li class="post_author">
+                          <i class="fa fa-user-o" aria-hidden="true"></i
+                          ><a href="#">wisefrancis</a>
+                        </li>
+                        <li class="posted_date">
+                          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                          <a href="#">October 24, 2021</a>
+                        </li>
+                        <li class="comments">
+                          <a href="#"
+                            ><i class="fa fa-comment-o" aria-hidden="true"></i
+                            >0</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div id="search-2" class="widget widget_search">
+            <form
+              role="search"
+              class="cm-search-form"
+              method="get"
+              action="http://pwanproperty.com.ng/"
+            >
+              <input type="search" name="s" placeholder="Type Here" value"" >
+              <button type="submit" class="cm-submit-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="widget">
+            <div class="widget-title">
+              <h2 style="margin: 0">About Us</h2>
+            </div>
+            <a href="#">
+              <figure class="imghover">
+                <img
+                  width="761px"
+                  height="450px"
+                  src="http://pwanproperty.com.ng/wp-content/uploads/2022/04/Rejoice-gardens-uyo-761x450.jpg"
+                  alt=""
+                />
+              </figure>
+            </a>
+            <div class="author_name">
+              <h4
+                style="margin-bottom: 20px; font-size: 18px; font-weight: bold"
+              >
+                About PWAN
+              </h4>
+            </div>
+            <div class="author_desc">
+              <p style="margin-bottom: 20px">
+                PWAN HOMES LTD is a property marketing and information company
+                located in Lekki, Lagos. We
+              </p>
+            </div>
+            <div class="author-detail-link">
+              <a
+                href="http://pwanproperty.com.ng/index.php/about-pwan/"
+                class="location-button"
+                style="border-radius: 0"
+                >Read More</a
+              >
+            </div>
+          </div>
+          <div class="widget recent-posts">
+            <div class="widget-title">
+              <h2 style="margin: 0">Recent Posts</h2>
+            </div>
+            <ul>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/oj-marc-estate-gbetu%ef%bf%bc/"
+                  >OJ &#038; MARC ESTATE, GBETU￼</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/rejoice-garden-uyo/"
+                  >REJOICE GARDEN UYO</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/estates-in-imo-state/"
+                  >Estates in Imo State</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/excel-courts-estate-ketu/"
+                  >EXCEL COURTS ESTATE, KETU</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/oj-marc-estate-ilamija-ibeju-lekki/"
+                  >OJ &#038; MARC #ESTATE, ILamija, Ibeju Lekki</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/regent-city-estate-enugu-1-5m/"
+                  >Regent City Estate, Enugu, 1.5m</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2022/04/22/regent-town-estate-owerri/"
+                  >REGENT TOWN ESTATE OWERRI</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2021/11/12/buy-land-from-us-and-we-help-your-resell-at-40-profit/"
+                  >Buy Land from us and We help your Resell at 40% Profit</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2021/10/27/rejoice-villas-estate-ikorodu/"
+                  >REJOICE VILLAS ESTATE IKORODU</a
+                >
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/2021/10/24/diamond-crest-estate-asaba/"
+                  >Diamond Crest Estate Asaba</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="widget widget_categories">
+            <div class="widget-title"><h2>Choose a Location</h2></div>
+            <ul>
+              <li style="padding-top: 0">
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/abakiliki/"
+                  >Abakiliki</a
+                >
+                (3)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/anambra/"
+                  >Anambra</a
+                >
+                (9)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/asaba/"
+                  >Asaba</a
+                >
+                (14)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/blog/"
+                  >Blog</a
+                >
+                (6)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/calabar/"
+                  >calabar</a
+                >
+                (4)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/ebonyi/"
+                  >Ebonyi</a
+                >
+                (2)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/enugu/"
+                  >Enugu</a
+                >
+                (9)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/ibadan/"
+                  >Ibadan</a
+                >
+                (1)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/ibeju-lekki/"
+                  >Ibeju Lekki</a
+                >
+                (32)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/ikorodu/"
+                  >Ikorodu</a
+                >
+                (4)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/mainland/"
+                  >Mainland</a
+                >
+                (3)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/ota-ogun/"
+                  >Ota (Ogun)</a
+                >
+                (4)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/owerri/"
+                  >Owerri</a
+                >
+                (15)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/personal-property/"
+                  >Personal Property</a
+                >
+                (3)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/uncategorized/"
+                  >Uncategorized</a
+                >
+                (4)
+              </li>
+              <li>
+                <a
+                  class="post-title post-title3"
+                  href="http://pwanproperty.com.ng/index.php/category/uyo/"
+                  >Uyo</a
+                >
+                (8)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer_inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-12"></div>
+            <div class="col-lg-4 col-12">
+              <div class="widget-title">
+                <h2 style="margin: 0; color: white">
+                  Allocations on our Estates
+                </h2>
+              </div>
+              <div class="footer-gallery">
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Fluorish-City-Estate-Enugu.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Safari-Park-Estate-Odeomi</h6>
+                  </div>
+                </div>
+
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Flourish-city.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Flourish-city-Lagos</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-gallery">
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Safari-Park-Estate.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Safari-Park-Estate</h6>
+                  </div>
+                </div>
+
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Flourish-city-Lagos.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Corner-stone-estate-Lagos2</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-gallery">
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Untitled-18.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Corner-stone-estate-Lagos</h6>
+                  </div>
+                </div>
+
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Corner-stone-estate-Lagos.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Untitled-18</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-gallery">
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Safari-Park-Estate-Odeomi.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Flourish-city</h6>
+                  </div>
+                </div>
+
+                <div
+                  class="footer_images imghover"
+                  style="
+                    background-image: url(http://pwanproperty.com.ng/wp-content/uploads/photo-gallery/Corner-stone-estate-Lagos2.jpg?bwg=1635178035);
+                  "
+                >
+                  <div class="zoom-effect-overlay">
+                    <h6>Fluorish-City-Estate-Enugu</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-12"></div>
+          </div>
+          <div class="copyright_section">
+            <div class="row">
+              <div class="col-lg-7 col-md-6 col-12">
+                <div class="copyrights">
+                  <p>Cream Magazine by <a href="#">Themebeez</a></p>
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-6 col-12">
+                <div class="footer_nav">
+                  <ul class="footer_menu">
+                    <li><a href="#" class="footer_links">Home</a></li>
+                    <li><a href="#" class="footer_links">Lagos</a></li>
+                    <li><a href="#" class="footer_links">Anambra</a></li>
+                    <li><a href="#" class="footer_links">Enugu</a></li>
+                    <li><a href="#" class="footer_links">Owerri</a></li>
+                    <li><a href="#" class="footer_links">Asaba</a></li>
+                    <li><a href="#" class="footer_links">Uyo</a></li>
+                    <li><a href="#" class="footer_links">Ota(Ogun)</a></li>
+                    <li><a href="#" class="footer_links">Ibadan</a></li>
+                    <li><a href="#" class="footer_links">Blog</a></li>
+                    <li>
+                      <a href="#" class="footer_links">Personal Property</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="toTop btn btn-info" style="display: inline-block">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </button>
+    </footer>
+    <div
+      class="heateor_sss_sharing_container heateor_sss_vertical_sharing heateor_sss_bottom_sharing"
+      style="
+        width: 44px;
+        left: -10px;
+        top: 100px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      "
+      data-heateor-sss-href="http://pwanproperty.com.ng"
+    >
+      <div class="heateor_sss_sharing_ul">
+        <a
+          class="heateor_sss_facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpwanproperty.com.ng"
+          title="Facebook"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg"
+            style="
+              background-color: #3c589a;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-5 -5 42 42"
+            >
+              <path
+                d="M17.78 27.5V17.008h3.522l.527-4.09h-4.05v-2.61c0-1.182.33-1.99 2.023-1.99h2.166V4.66c-.375-.05-1.66-.16-3.155-.16-3.123 0-5.26 1.905-5.26 5.405v3.016h-3.53v4.09h3.53V27.5h4.223z"
+                fill="#fff"
+              ></path></svg></span></a
+        ><a
+          class="heateor_sss_button_twitter"
+          href="http://twitter.com/intent/tweet?text=PWAN%20Property%20Nigeria%20-%20Genuine%20Properties%20in%20Ngeria&url=http%3A%2F%2Fpwanproperty.com.ng"
+          title="Twitter"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_twitter"
+            style="
+              background-color: #55acee;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-4 -4 39 39"
+            >
+              <path
+                d="M28 8.557a9.913 9.913 0 0 1-2.828.775 4.93 4.93 0 0 0 2.166-2.725 9.738 9.738 0 0 1-3.13 1.194 4.92 4.92 0 0 0-3.593-1.55 4.924 4.924 0 0 0-4.794 6.049c-4.09-.21-7.72-2.17-10.15-5.15a4.942 4.942 0 0 0-.665 2.477c0 1.71.87 3.214 2.19 4.1a4.968 4.968 0 0 1-2.23-.616v.06c0 2.39 1.7 4.38 3.952 4.83-.414.115-.85.174-1.297.174-.318 0-.626-.03-.928-.086a4.935 4.935 0 0 0 4.6 3.42 9.893 9.893 0 0 1-6.114 2.107c-.398 0-.79-.023-1.175-.068a13.953 13.953 0 0 0 7.55 2.213c9.056 0 14.01-7.507 14.01-14.013 0-.213-.005-.426-.015-.637.96-.695 1.795-1.56 2.455-2.55z"
+                fill="#fff"
+              ></path></svg></span></a
+        ><a
+          class="heateor_sss_button_reddit"
+          href="http://reddit.com/submit?url=http%3A%2F%2Fpwanproperty.com.ng&title=PWAN%20Property%20Nigeria%20-%20Genuine%20Properties%20in%20Ngeria"
+          title="Reddit"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_reddit"
+            style="
+              background-color: #ff5700;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-3.5 -3.5 39 39"
+            >
+              <path
+                d="M28.543 15.774a2.953 2.953 0 0 0-2.951-2.949 2.882 2.882 0 0 0-1.9.713 14.075 14.075 0 0 0-6.85-2.044l1.38-4.349 3.768.884a2.452 2.452 0 1 0 .24-1.176l-4.274-1a.6.6 0 0 0-.709.4l-1.659 5.224a14.314 14.314 0 0 0-7.316 2.029 2.908 2.908 0 0 0-1.872-.681 2.942 2.942 0 0 0-1.618 5.4 5.109 5.109 0 0 0-.062.765c0 4.158 5.037 7.541 11.229 7.541s11.22-3.383 11.22-7.541a5.2 5.2 0 0 0-.053-.706 2.963 2.963 0 0 0 1.427-2.51zm-18.008 1.88a1.753 1.753 0 0 1 1.73-1.74 1.73 1.73 0 0 1 1.709 1.74 1.709 1.709 0 0 1-1.709 1.711 1.733 1.733 0 0 1-1.73-1.711zm9.565 4.968a5.573 5.573 0 0 1-4.081 1.272h-.032a5.576 5.576 0 0 1-4.087-1.272.6.6 0 0 1 .844-.854 4.5 4.5 0 0 0 3.238.927h.032a4.5 4.5 0 0 0 3.237-.927.6.6 0 1 1 .844.854zm-.331-3.256a1.726 1.726 0 1 1 1.709-1.712 1.717 1.717 0 0 1-1.712 1.712z"
+                fill="#fff"
+              /></svg></span></a
+        ><a
+          class="heateor_sss_button_linkedin"
+          href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fpwanproperty.com.ng&title=PWAN%20Property%20Nigeria%20-%20Genuine%20Properties%20in%20Ngeria"
+          title="Linkedin"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_linkedin"
+            style="
+              background-color: #0077b5;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="0 0 32 32"
+            >
+              <path
+                d="M6.227 12.61h4.19v13.48h-4.19V12.61zm2.095-6.7a2.43 2.43 0 0 1 0 4.86c-1.344 0-2.428-1.09-2.428-2.43s1.084-2.43 2.428-2.43m4.72 6.7h4.02v1.84h.058c.56-1.058 1.927-2.176 3.965-2.176 4.238 0 5.02 2.792 5.02 6.42v7.395h-4.183v-6.56c0-1.564-.03-3.574-2.178-3.574-2.18 0-2.514 1.7-2.514 3.46v6.668h-4.187V12.61z"
+                fill="#fff"
+              ></path></svg></span></a
+        ><a
+          class="heateor_sss_button_pinterest"
+          onclick="javascript:void( (function() {var e=document.createElement('script' );e.setAttribute('type','text/javascript' );e.setAttribute('charset','UTF-8' );e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());"
+          title="Pinterest"
+          rel="nofollow noopener"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_pinterest"
+            style="
+              background-color: #cc2329;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-2 -2 35 35"
+            >
+              <path
+                fill="#fff"
+                d="M16.539 4.5c-6.277 0-9.442 4.5-9.442 8.253 0 2.272.86 4.293 2.705 5.046.303.125.574.005.662-.33.061-.231.205-.816.27-1.06.088-.331.053-.447-.191-.736-.532-.627-.873-1.439-.873-2.591 0-3.338 2.498-6.327 6.505-6.327 3.548 0 5.497 2.168 5.497 5.062 0 3.81-1.686 7.025-4.188 7.025-1.382 0-2.416-1.142-2.085-2.545.397-1.674 1.166-3.48 1.166-4.689 0-1.081-.581-1.983-1.782-1.983-1.413 0-2.548 1.462-2.548 3.419 0 1.247.421 2.091.421 2.091l-1.699 7.199c-.505 2.137-.076 4.755-.039 5.019.021.158.223.196.314.077.13-.17 1.813-2.247 2.384-4.324.162-.587.929-3.631.929-3.631.46.876 1.801 1.646 3.227 1.646 4.247 0 7.128-3.871 7.128-9.053.003-3.918-3.317-7.568-8.361-7.568z"
+              /></svg></span></a
+        ><a
+          class="heateor_sss_MeWe"
+          href="https://mewe.com/share?link=http%3A%2F%2Fpwanproperty.com.ng"
+          title="MeWe"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg"
+            style="
+              background-color: #007da1;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-4 -3 38 38"
+            >
+              <g fill="#fff">
+                <path
+                  d="M9.636 10.427a1.22 1.22 0 1 1-2.44 0 1.22 1.22 0 1 1 2.44 0zM15.574 10.431a1.22 1.22 0 0 1-2.438 0 1.22 1.22 0 1 1 2.438 0zM22.592 10.431a1.221 1.221 0 1 1-2.443 0 1.221 1.221 0 0 1 2.443 0zM29.605 10.431a1.221 1.221 0 1 1-2.442 0 1.221 1.221 0 0 1 2.442 0zM3.605 13.772c0-.471.374-.859.859-.859h.18c.374 0 .624.194.789.457l2.935 4.597 2.95-4.611c.18-.291.43-.443.774-.443h.18c.485 0 .859.387.859.859v8.113a.843.843 0 0 1-.859.845.857.857 0 0 1-.845-.845V16.07l-2.366 3.559c-.18.276-.402.443-.72.443-.304 0-.526-.167-.706-.443l-2.354-3.53V21.9c0 .471-.374.83-.845.83a.815.815 0 0 1-.83-.83v-8.128h-.001zM14.396 14.055a.9.9 0 0 1-.069-.333c0-.471.402-.83.872-.83.415 0 .735.263.845.624l2.23 6.66 2.187-6.632c.139-.402.428-.678.859-.678h.124c.428 0 .735.278.859.678l2.187 6.632 2.23-6.675c.126-.346.415-.609.83-.609.457 0 .845.361.845.817a.96.96 0 0 1-.083.346l-2.867 8.032c-.152.43-.471.706-.887.706h-.165c-.415 0-.721-.263-.872-.706l-2.161-6.328-2.16 6.328c-.152.443-.47.706-.887.706h-.165c-.415 0-.72-.263-.887-.706l-2.865-8.032z"
+                ></path>
+              </g></svg></span></a
+        ><a
+          class="heateor_sss_button_mix"
+          href="https://mix.com/mixit?url=http%3A%2F%2Fpwanproperty.com.ng"
+          title="Mix"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg heateor_sss_s__default heateor_sss_s_mix"
+            style="
+              background-color: #ff8226;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-7 -8 45 45"
+            >
+              <g fill="#fff">
+                <path
+                  opacity=".8"
+                  d="M27.87 4.125c-5.224 0-9.467 4.159-9.467 9.291v2.89c0-1.306 1.074-2.362 2.399-2.362s2.399 1.056 2.399 2.362v1.204c0 1.306 1.074 2.362 2.399 2.362s2.399-1.056 2.399-2.362V4.134c-.036-.009-.082-.009-.129-.009"
+                />
+                <path
+                  d="M4 4.125v12.94c2.566 0 4.668-1.973 4.807-4.465v-2.214c0-.065 0-.12.009-.176.093-1.213 1.13-2.177 2.39-2.177 1.325 0 2.399 1.056 2.399 2.362v9.226c0 1.306 1.074 2.353 2.399 2.353s2.399-1.056 2.399-2.353v-6.206c0-5.132 4.233-9.291 9.467-9.291H4z"
+                />
+                <path
+                  opacity=".8"
+                  d="M4 17.074v8.438c0 1.306 1.074 2.362 2.399 2.362s2.399-1.056 2.399-2.362V12.61C8.659 15.102 6.566 17.074 4 17.074"
+                />
+              </g></svg></span></a
+        ><a
+          class="heateor_sss_whatsapp"
+          href="https://api.whatsapp.com/send?text=PWAN%20Property%20Nigeria%20-%20Genuine%20Properties%20in%20Ngeria http%3A%2F%2Fpwanproperty.com.ng"
+          title="Whatsapp"
+          rel="nofollow noopener"
+          target="_blank"
+          style="
+            font-size: 32px !important;
+            box-shadow: none;
+            display: inline-block;
+            vertical-align: middle;
+          "
+          ><span
+            class="heateor_sss_svg"
+            style="
+              background-color: #55eb4c;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block;
+              opacity: 1;
+              /*float: left;*/
+              font-size: 32px;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+              padding: 0 4px;
+              vertical-align: middle;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            ><svg
+              style="display: block"
+              focusable="false"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              viewBox="-6 -5 40 40"
+            >
+              <path
+                class="heateor_sss_svg_stroke heateor_sss_no_fill"
+                stroke="#fff"
+                stroke-width="2"
+                fill="none"
+                d="M 11.579798566743314 24.396926207859085 A 10 10 0 1 0 6.808479557110079 20.73576436351046"
+              ></path>
+              <path
+                d="M 7 19 l -1 6 l 6 -1"
+                class="heateor_sss_no_fill heateor_sss_svg_stroke"
+                stroke="#fff"
+                stroke-width="2"
+                fill="none"
+              ></path>
+              <path
+                d="M 10 10 q -1 8 8 11 c 5 -1 0 -6 -1 -3 q -4 -3 -5 -5 c 4 -2 -1 -5 -1 -4"
+                fill="#fff"
+              ></path></svg></span></a
+        ><a
+          class="heateor_sss_more"
+          title="More"
+          rel="nofollow noopener"
+          style="
+            font-size: 32px !important;
+            border: 0;
+            box-shadow: none;
+            display: inline-block !important;
+            font-size: 16px;
+            padding: 0 4px;
+            vertical-align: middle;
+            display: inline;
+          "
+          href="http://pwanproperty.com.ng"
+          onclick="event.preventDefault()"
+          ><span
+            class="heateor_sss_svg"
+            style="
+              background-color: #ee8e2d;
+              width: 40px;
+              height: 40px;
+              margin: 0;
+              display: inline-block !important;
+              opacity: 1;
+              /*float: left;*/
+              font-size: 32px !important;
+              box-shadow: none;
+              display: inline-block;
+              font-size: 16px;
+
+              vertical-align: middle;
+              display: inline;
+              background-repeat: repeat;
+              overflow: hidden;
+              padding: 0;
+              cursor: pointer;
+              box-sizing: content-box;
+            "
+            onclick="heateorSssMoreSharingPopup(this, 'http://pwanproperty.com.ng', 'PWAN%20Property%20Nigeria%20-%20Genuine%20Properties%20in%20Ngeria', '' )"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              style="display: block"
+              width="100%"
+              height="100%"
+              viewBox="-4 -4 38 38"
+            >
+              <circle cx="10" cy="15" r="3" fill="#fff"></circle>
+              <circle cx="20" cy="10" r="3" fill="#fff"></circle>
+              <circle cx="20" cy="20" r="3" fill="#fff"></circle>
+              <path
+                d="M 10 15 L 20 10 m 0 10 L 10 15"
+                class="heateor_sss_svg_stroke heateor_sss_no_fill"
+                stroke-width="2"
+                stroke="#fff"
+              ></path></svg></span
+        ></a>
+      </div>
+      <div class="heateorSssClear"></div>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

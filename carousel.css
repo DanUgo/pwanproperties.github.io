@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+.carousel-item {
+    height: 409px;
+    background-color: white;
+    color: white;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+  }
+  .carousel-control-prev, .carousel-control-next{
+    background-color: #ff3d00;
+    width: 50px;
+    height: 40px;
+    
+    opacity: 0.9;
+
+  }
+  .carousel-control-prev2, .carousel-control-next2{
+    color: #777;
+    width: 30px;
+    height: 20px;
+    
+    opacity: 0.9;
+
+  }
+  .carousel-control-prev {
+    left: 82%;
+    z-index: 2;
+    bottom: 90%;
+}
+  .carousel-control-next {
+    right: 0;
+    z-index: 2;
+    bottom: 90%;
+}
+  .banner-caption {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 37%;
+    margin: 0 auto 0;
+    /* background-color: rgba(0, 0, 0, 0.20); */
+    padding: 0px 0 80px;
+  }
+  .quote_wrap {
+    float: right;
+    max-width: 506px;
+  }
+  .banner-caption span {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 24px;
+    color: #f1cf02;
+    display: block;
+    text-align: left;
+    margin-top: 25px;
+  }
+  .banner-caption h2 {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 36px;
+    padding: 17px 17px;
+  }
+  .banner-caption span a {
+    text-decoration: none;
+    padding: 10px 33px;
+    background: #1075bf;
+    color: #fff;
+    /* margin-top: 17px; */
+    float: right;
+  }
+  .work-craisel-col {
+    width: 100%;
+    height: 462px;
+    float: left;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.work-craisel-sec:first-child {
+  padding-right: 2px;
+}
+.work-craisel-sec {
+  padding: 0;
+}
+.no-padding {
+  padding: 0;
+}
+.craisel {
+  height: 25rem;
+  width: 50rem;
+  background-color: #777;
+  color: white;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
